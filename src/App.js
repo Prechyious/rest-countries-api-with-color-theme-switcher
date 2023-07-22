@@ -1,15 +1,16 @@
-import NavBar from "./components/NavBar";
-import { Search } from "./components/Search";
 import data from "./api/data.json";
 import Countries from "./components/Countries";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SingleCountry from "./components/SingleCountry";
 
 const App = () => {
     return (
-        <div>
-            <NavBar />
-            <Search data={data} />
-            <Countries data={data} />
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Countries data={data} />} />
+                <Route path="/:name" element={<SingleCountry data={data} />} />
+            </Routes>
+        </BrowserRouter>
     );
 };
 

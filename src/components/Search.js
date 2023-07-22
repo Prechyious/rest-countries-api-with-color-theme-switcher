@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { FaAngleDown, FaMagnifyingGlass } from "react-icons/fa6";
 
 export const Search = ({ data }) => {
     const [country, setCountry] = useState("");
+    const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
@@ -15,44 +17,42 @@ export const Search = ({ data }) => {
         setCountry("");
     };
 
-    const getUniqueRegions = () => {
-        const uniqueRegions = data.reduce((acc, continent) => {
-            if (!acc.includes(continent.region)) {
-                acc.push(continent.region);
-            }
-            return acc;
-        }, []);
-        return uniqueRegions.sort();
-    };
-
     return (
-        <div className="sticky top-16 left-0 bg-light-mode-bg">
+        <div className="sticky top-16 left-0 bg-light-mode-bg m-5">
             <form
-                className="flex flex-col md:flex-row gap-5 md:items-center md:justify-between mt-2 p-5"
+                className="flex flex-col md:flex-row gap-5 md:items-center md:justify-between mt-2"
                 onSubmit={handleSearchSubmit}
             >
-                <input
-                    className="py-2 px-4 rounded-md shadow-md"
-                    type="text"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    placeholder="Search for a country.."
-                />
+                <label className="py-3 px-4 flex text-light-mode-input items-center bg-white rounded-md shadow-md">
+                    <FaMagnifyingGlass />
+                    <input
+                        className="px-4 w-full bg-transparent outline-none"
+                        type="text"
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                        placeholder="Search for a country.."
+                    />
+                </label>
 
-                <select
-                    className="w-1/2 md:w-[unset] py-2 px-4 rounded-md shadow-md"
-                    name="filter"
-                    id="filter"
-                >
-                    <option value="">Filter by region</option>
-                    {getUniqueRegions().map((region) => {
-                        return (
-                            <option key={region} value={region}>
-                                {region}
-                            </option>
-                        );
-                    })}
-                </select>
+                <div className="relative md:w-1/6">
+                    <select
+                        className="w-1/2 md:w-full py-3 px-6 rounded-md shadow-md cursor-pointer appearance-none outline-none"
+                        name="filter"
+                        id="filter"
+                    >
+                        <option>Filter by Region</option>
+                        {regions.map((region) => {
+                            return (
+                                <option key={region} value={region}>
+                                    {region}
+                                </option>
+                            );
+                        })}
+                    </select>
+                    <div className="absolute inset-y-0 left-40 flex items-center pl-3 pointer-events-none md:left-40 md:">
+                        <FaAngleDown />
+                    </div>
+                </div>
             </form>
         </div>
     );

@@ -6,8 +6,14 @@
 
 * {
     font-family: "Nunito Sans", sans-serif;
+    transition: background-color 100ms ease;
 }
 
 body {
-    @apply bg-light-mode-bg;
+    @apply bg-light-mode-bg text-light-mode-text;
+}
+
+/* Define dark mode styles using the dark class */
+.dark {
+    @apply bg-dark-mode-bg text-light-mode-lements;
 }

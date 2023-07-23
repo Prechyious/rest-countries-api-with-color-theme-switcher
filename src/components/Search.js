@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaAngleDown, FaMagnifyingGlass } from "react-icons/fa6";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export const Search = ({ data }) => {
     const [country, setCountry] = useState("");
@@ -7,7 +7,6 @@ export const Search = ({ data }) => {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        // console.log(data);
 
         setCountry(data.name);
         reset();
@@ -18,25 +17,25 @@ export const Search = ({ data }) => {
     };
 
     return (
-        <div className="sticky top-16 left-0 bg-light-mode-bg m-5">
+        <div className="sticky top-16 left-0 p-4 bg-light-mode-lements dark:bg-dark-mode-bg">
             <form
                 className="flex flex-col md:flex-row gap-5 md:items-center md:justify-between mt-2"
                 onSubmit={handleSearchSubmit}
             >
-                <label className="py-3 px-4 flex text-light-mode-input items-center bg-white rounded-md shadow-md">
+                <label className="py-3 px-4 flex bg-light-mode-bg items-center text-light-mode-input  dark:bg-dark-mode-elements dark:text-light-mode-lements rounded-md shadow-md">
                     <FaMagnifyingGlass />
                     <input
-                        className="px-4 w-full bg-transparent outline-none"
+                        className="px-4 w-full text-light-mode-input bg-transparent outline-none dark:text-light-mode-lements"
                         type="text"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                         placeholder="Search for a country.."
                     />
                 </label>
-
-                <div className="relative md:w-1/6">
+                <div className="relative md:w-1/6 text-light-mode-text">
                     <select
-                        className="w-1/2 md:w-full py-3 px-6 rounded-md shadow-md cursor-pointer appearance-none outline-none"
+                        className="w-1/2 md:w-full py-3 px-5 rounded-md shadow-md cursor-pointer outline-none
+                        text-light-mode-text dark:text-light-mode-lements bg-light-mode-lements dark:bg-dark-mode-elements"
                         name="filter"
                         id="filter"
                     >
@@ -49,9 +48,6 @@ export const Search = ({ data }) => {
                             );
                         })}
                     </select>
-                    <div className="absolute inset-y-0 left-40 flex items-center pl-3 pointer-events-none md:left-40 md:">
-                        <FaAngleDown />
-                    </div>
                 </div>
             </form>
         </div>

@@ -41,7 +41,7 @@ Users should be able to:
 ### Links
 
 -   Solution URL: [Add solution URL here](https://github.com/Prechyious/rest-countries-api-with-color-theme-switcher)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Live Site URL: [Add live site URL here](https://prech-rest-countries.netlify.app/)
 
 ## My process
 

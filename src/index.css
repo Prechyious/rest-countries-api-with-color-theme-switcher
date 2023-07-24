@@ -15,5 +15,5 @@ body {
 
 /* Define dark mode styles using the dark class */
 .dark {
-    @apply bg-dark-mode-bg text-light-mode-lements;
+    @apply bg-dark-mode-bg text-light-mode-elements;
 }

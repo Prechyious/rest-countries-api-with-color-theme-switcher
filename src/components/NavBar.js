@@ -27,7 +27,10 @@ const NavBar = () => {
     }, []);
 
     return (
-        <nav className="sticky top-0 left-0 flex items-center justify-between p-5 md:py-5 md:px-10 shadow-md z-10 bg-light-mode-bg dark:bg-dark-mode-bg dark:text-light-mode-lements">
+        <nav
+            className="sticky top-0 left-0 flex items-center justify-between p-5 md:py-5 md:px-10 shadow-md z-10 bg-light-mode-bg
+        dark:bg-dark-mode-elements dark:text-light-mode-elements"
+        >
             <h1 className="font-bold">Where in the world?</h1>
             <button
                 className="flex items-center gap-2 font-bold"

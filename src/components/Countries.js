@@ -6,35 +6,67 @@ const Countries = ({ data }) => {
     const [countries, setCountries] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchInput, setSearchInput] = useState("");
-    const [filtered, setFiltered] = useState("");
-
-    const getCountries = () => {
-        const res = data.map((country) => country);
-        setCountries(res);
-    };
+    const [filtered, setFiltered] = useState([]);
 
     useEffect(() => {
-        getCountries();
+        const res = data.map((country) => country);
+        setCountries(res);
+        setFiltered(res);
         setIsLoading(false);
-    }, [countries, isLoading]);
+    }, [data]);
+
+    const searchCountry = (searchValue) => {
+        setSearchInput(searchValue);
+
+        if (searchInput) {
+            const filteredCountries = countries.filter((country) => {
+                return Object.values(country)
+                    .join("")
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase());
+            });
+            setFiltered(filteredCountries);
+        } else {
+            setFiltered(countries);
+        }
+    };
+
+    const handleFilterByRegion = (selectedRegion) => {
+        if (selectedRegion) {
+            const filteredCountries = countries.filter(
+                (country) => country.region === selectedRegion
+            );
+            setFiltered(filteredCountries);
+        } else {
+            setFiltered(countries);
+        }
+    };
 
     return (
         <>
-            <Search />
+            <Search
+                searchCountry={searchCountry}
+                searchInput={searchInput}
+                filterByRegion={handleFilterByRegion}
+            />
             {isLoading ? (
                 <h1 className="flex items-center justify-center h-[50dvh] text-2xl uppercase font-bold text-center animate-pulse">
                     Loading...
                 </h1>
             ) : (
                 <main className="mt-5 flex flex-wrap items-center justify-center gap-10 mx-auto dark:bg-dark-mode-bg">
-                    {countries.map(
+                    {filtered.map(
                         ({ name, flag, population, region, capital }) => {
                             return (
-                                <Link to={`/${name}`} key={name}>
-                                    <div className="shadow-md w-[250px] rounded-xl cursor-pointer overflow-hidden bg-light-mode-lements dark:bg-dark-mode-elements hover:shadow-xl transition-all duration-300 ease-in-out">
-                                        <div>
+                                <Link
+                                    className="border-1 border-red-500"
+                                    to={`/${name}`}
+                                    key={name}
+                                >
+                                    <div className="shadow-md w-[260px] rounded-xl cursor-pointer overflow-hidden bg-light-mode-elements dark:bg-dark-mode-elements hover:shadow-xl transition-all duration-300 ease-in-out">
+                                        <div className="w-full">
                                             <img
-                                                className="w-[260px] h-[160px]"
+                                                className="w-[270px] h-[170px]"
                                                 src={flag}
                                                 alt={name}
                                             />

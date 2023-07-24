@@ -9,13 +9,13 @@ const SingleCountry = ({ data }) => {
     return (
         <>
             <Link to="/">
-                <button className="m-10 inline-flex items-center gap-4 border-1 bg-white dark:bg-dark-mode-elements rounded-md shadow-md px-4 py-2">
+                <button className="m-10 inline-flex items-center gap-4 border-1 bg-white dark:bg-dark-mode-elements dark:text-white rounded-md shadow-md px-4 py-2">
                     <FaArrowLeftLong />
                     Back
                 </button>
             </Link>
             <div className="mx-10 md:mx-0 md:flex md:items-center md:justify-between md:h-[60dvh]">
-                <section className="grid md:grid-cols-2 md:place-items-center md:gap-10">
+                <section className="grid md:grid-cols-2 md:place-items-center md:gap-10 dark:text-light-mode-elements">
                     <div>
                         <img
                             className="w-[500px] h-[380px]"

@@ -4,7 +4,7 @@ export const Search = ({ searchCountry, searchInput, filterByRegion }) => {
     const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
     return (
-        <div className="sticky top-16 left-0 p-4 bg-light-mode-bg dark:bg-dark-mode-bg z-[1] flex justify-between gap-5 flex-col md:items-start md:flex-row">
+        <div className="sticky top-16 left-0 md:px-10 p-4 bg-light-mode-bg dark:bg-dark-mode-bg flex justify-between gap-5 flex-col md:items-start md:flex-row">
             <label className="py-3 px-4 flex bg-light-mode-bg items-center text-light-mode-input dark:bg-dark-mode-elements dark:text-light-mode-elements rounded-md shadow-md cursor-pointer">
                 <FaMagnifyingGlass />
                 <input

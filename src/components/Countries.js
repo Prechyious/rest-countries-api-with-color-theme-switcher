@@ -54,7 +54,11 @@ const Countries = ({ data }) => {
                     Loading...
                 </h1>
             ) : (
-                <main className="mt-5 flex flex-wrap items-center justify-center gap-10 mx-auto dark:bg-dark-mode-bg">
+                <main
+                    className="mt-5 flex flex-wrap items-center justify-center gap-10 md:gap-20 
+                bg-light-mode-bg dark:bg-dark-mode-bg dark:text-light-mode-elements
+                text-light-mode-text"
+                >
                     {filtered.map(
                         ({ name, flag, population, region, capital }) => {
                             return (

@@ -41,7 +41,7 @@ const NavBar = () => {
             <h1 className="font-bold">Where in the world?</h1>
             <button
                 className="flex items-center gap-2 font-bold"
-                onClick={changeTheme}
+                onClick={toggleDarkMode}
             >
                 {darkMode ? <FaSun /> : <FaMoon />}
                 {darkMode ? <span>Light Mode</span> : <span>Dark Mode</span>}
